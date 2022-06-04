@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="../dist/output.css" />
+  <title>Desafío Bsale</title>
+</head>
+
+<body class="max-w-screen h-screen" onload="fetchData()">
+  <!--Navbar -->
+
+  <nav class="w-full fixed top-0">
+    <div class="py-4 bg-orange-400 shadow-md">
+      <div class="md:container mx-auto w-11/12 flex items-center justify-between">
+        <h1 class="text-2xl text-gray-100 font-semibold cursor-pointer">
+          Bsale Store
+        </h1>
+        <span class="block md:hidden cursor-pointer" id="burger-btn">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+      </div>
+    </div>
+
+    <div style="display: none" class="absolute w-full shadow-lg bg-orange-400" id="dropdown-menu">
+      <div class="flex flex-col md:container mx-auto w-11/12" id="dropdown-options">
+        <div
+          class="dropdown-element">
+          Bebidas Energéticas
+        </div>
+        <div class="dropdown-element">
+          Pisco
+        </div>
+        <div class="dropdown-element">
+          Ron
+        </div>
+        <div class="dropdown-element">
+          Bebida
+        </div>
+        <div class="dropdown-element">
+          Snack
+        </div>
+        <div class="dropdown-element">
+          Cerveza
+        </div>
+        <div class=" dropdown-element mb-4">
+          Vodka
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!--Body -->
+  <div class="h-full pt-20 bg-red-500 max-w-full">
+    <div class="md:container gap-8 flex w-11/12 h-5/6 mx-auto">
+      <div class="md:w-2/12 md:block hidden bg-gray-100 rounded-md border-2 border-gray-200">uwu</div>
+      <div class="w-full border-2 border-gray-200">uwu</div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/3c79500f80.js" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+</body>
+
+</html>
