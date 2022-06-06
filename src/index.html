@@ -39,25 +39,36 @@
   </nav>
 
   <!--Body -->
-  <div class="h-full pt-28 pb-20 max-w-full">
+  <div class="h-screen pt-24 max-w-full">
+    <form action="" class="text-center mb-8">
+      <span class="border-2  py-1 px-4 rounded-lg">
+        <i class="fa-solid mr-4 fa-magnifying-glass"></i>
+        <input type="text" placeholder="Buscar producto..." class="group-focus:outline group-focus:ring-orange-400 focus:outline-none text-gray-700"/>
+      </span>
+    </form>
+
     <div class="md:container gap-8 flex h-full max-h-full w-11/12 mx-auto">
       <div class="md:w-2/12 px-4 py-2 md:block hidden h-min bg-gray-50 rounded-md border-2 border-gray-100">
-        <h2 class="text-sm font-bold">Seleccione la categoría</h2>
-        <hr class="my-1">
-        <ul class="my-4">
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Bebidas Energéticas</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Pisco</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Ron</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Bebida</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Snack</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Cerveza</li>
-          <li class="my-[3px] cursor-pointer hover:text-orange-400">Vodka</li>
-          </ul>
+        <h2 class="font-bold">Seleccione la categoría</h2>
+        <hr class="my-2">
+        <ul class="my-4" id="category-list">
+          <li onclick="filterData(`bebida energetica`)" class="my-[3px] cursor-pointer hover:text-orange-400">Bebidas Energéticas</li>
+          <li onclick="filterData(`pisco`)" class="my-[3px] cursor-pointer hover:text-orange-400">Pisco</li>
+          <li onclick="filterData(`ron`)" class="my-[3px] cursor-pointer hover:text-orange-400">Ron</li>
+          <li onclick="filterData(`bebida`)" class="my-[3px] cursor-pointer hover:text-orange-400">Bebida</li>
+          <li onclick="filterData(`snack`)" class="my-[3px] cursor-pointer hover:text-orange-400">Snack</li>
+          <li onclick="filterData(`cerveza`)" class="my-[3px] cursor-pointer hover:text-orange-400">Cerveza</li>
+          <li onclick="filterData(`vodka`)" class="my-[3px] cursor-pointer hover:text-orange-400">Vodka</li>  
+          <hr class="my-2">
+          <li onclick="filterData(``)" class="my-[3px] font-semibold cursor-pointer hover:text-orange-400">Listar todo</li>  
+        </ul>
+      </div>
+      <div class=" w-full md:h-5/6 h-full ">
+       
+        <div id="grid-products"
+          class="grid  mb-20  md:grid-cols-4 gap-10 text-center sm:grid-cols-2 grid-cols-1 auto-rows-auto">
+
         </div>
-        <div class=" w-full md:h-5/6 h-full ">
-          <div id="grid-products" class="grid md:grid-cols-4 gap-10 text-center sm:grid-cols-2 grid-cols-1 auto-rows-auto">
-            
-          </div>
       </div>
     </div>
   </div>
