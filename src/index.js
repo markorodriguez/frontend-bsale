@@ -27,7 +27,11 @@ burgerButton.addEventListener("click", () => {
 });
 
 const fetchData = async () => {
-  const resProd = await fetch("http://localhost:5000/products");
+  const resProd = await fetch("https://bsale-markorodriguez.herokuapp.com/products",{
+    headers: {'Access-Control-Allow-Origin': '*', 
+    'Access-Control-Allow-Headers': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  }
+  });
   const dataProd = await resProd.json();
 
   setTimeout( () =>{
@@ -41,7 +45,11 @@ const fetchData = async () => {
 
   tmpArray = dataProd;
 
-  const resCat = await fetch("http://localhost:5000/categories");
+  const resCat = await fetch("https://bsale-markorodriguez.herokuapp.com/categories", {
+    headers: {'Access-Control-Allow-Origin': '*', 
+    'Access-Control-Allow-Headers': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+  }
+  });
   const dataCat = await resCat.json();
   dataCat.map((category) => categories.push(category));
 
