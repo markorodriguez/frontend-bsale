@@ -3,9 +3,11 @@ const dropdown = document.getElementById("dropdown-menu");
 const dropOptions = document.getElementById("dropdown-options");
 const gridProducts = document.getElementById("grid-products");
 const categoryList = document.getElementById("category-list");
+const productSearch = document.getElementById("product-search");
 
 const products = [];
 const categories = [];
+let tmpArray = [];
 
 window.addEventListener("resize", () => {
   if (window.innerWidth >= 769) {
@@ -25,6 +27,8 @@ const fetchData = async () => {
   const resProd = await fetch("http://localhost:5000/products");
   const dataProd = await resProd.json();
   dataProd.map((product) => products.push(product));
+  
+  tmpArray = dataProd
 
   const resCat = await fetch("http://localhost:5000/categories");
   const dataCat = await resCat.json();
@@ -32,18 +36,25 @@ const fetchData = async () => {
 
   const productsItems = renderProducts(dataProd)
   gridProducts.innerHTML = productsItems.join("");
+
+  const categoriesItems = renderSideBar(dataCat)
+  categoryList.innerHTML = categoriesItems.join("");
+
+  const dropdownItems = renderDropdown(dataCat)
+  dropOptions.innerHTML = dropdownItems.join("");
+  
 };
 
 
 const filterData = (params) => {
-  const filteredCat = categories.filter((category) => category.name == params);
+  const filteredCat = categories.filter((category) => category.id == params);
   const filteredProducts = products.filter(
     (product) => product.category == filteredCat[0].id
   );
+  tmpArray = filteredProducts
   const filteredItems = renderProducts(filteredProducts);
   gridProducts.innerHTML = filteredItems.join("");
 };
-
 
 
 const renderProducts = (params) => {
@@ -80,4 +91,49 @@ const renderProducts = (params) => {
 
   return items
 
+}
+
+const renderSideBar = (params) => {
+  const items = params.map((element)=>` <li onclick="filterData(${element.id})" class="my-[3px] cursor-pointer hover:text-orange-400">${element.name.charAt(0).toUpperCase()+''+element.name.slice(1)}</li>`)
+  return items
+}
+
+const renderDropdown = (params) => {
+  const items = params.map((element)=>` <div onclick="filterData(${element.id})" class="dropdown-element">${element.name.charAt(0).toUpperCase()+''+element.name.slice(1)}</div>`)
+  return items
+}
+
+const resetFilter = () => {
+  const items = renderProducts(products)
+  gridProducts.innerHTML = items.join("");
+}
+
+productSearch.addEventListener('submit', async (e) => {
+  e.preventDefault()
+  
+  const foundProducts = await fetch("http://localhost:5000/find-product", {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'}, 
+    body: JSON.stringify({product_name: document.getElementById("product_find").value} )
+  })
+
+  const data = await foundProducts.json()
+  const items = renderProducts(data)
+  gridProducts.innerHTML = items.join("");
+
+})
+
+const sortProductsAsc = () => {
+  const sortedProducts = [...products].sort((a,b) => a.price - b.price)
+  const items = renderProducts(sortedProducts)
+  gridProducts.innerHTML = items.join("");
+}
+
+const sortProductsDesc = () => {
+  /*
+  const sortedProducts =[...tmpArray].sort((a,b) => b.price - a.price)
+  const items = renderProducts(sortedProducts)
+  gridProducts.innerHTML = items.join("");*/
+
+  console.log(tmpArray)
 }
