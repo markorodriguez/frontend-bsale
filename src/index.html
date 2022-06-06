@@ -5,9 +5,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png"
+    type="image/x-icon" />
   <link rel="stylesheet" href="index.css" />
   <link rel="stylesheet" href="../dist/output.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
+    integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Desafío Bsale</title>
 </head>
 
@@ -26,52 +30,68 @@
     </div>
 
     <div style="display: none" class="absolute w-full shadow-lg bg-orange-400" id="dropdown-menu">
-      <div class="flex flex-col md:container mx-auto w-11/12" id="dropdown-options">
-      </div>
+      <div class="flex flex-col md:container mx-auto w-11/12" id="dropdown-options"></div>
     </div>
   </nav>
 
   <!--Body -->
   <div class="h-screen pt-24 w-full max-w-full">
-    <div class="flex flex-col gap-5 md:flex-row container w-full mx-auto items-center mb-8 justify-center md:justify-end">
+    <div
+      class="flex flex-col gap-5 md:flex-row container w-full mx-auto items-center mb-8 justify-center md:justify-end">
       <form action="/#" id="product-search" method="post" class="text-center">
-        <span class="border-2  py-1 px-4 rounded-lg">
+        <span class="border-2 py-1 px-4 rounded-lg">
           <i class="fa-solid mr-4 fa-magnifying-glass"></i>
-          <input name="product_find" id="product_find"  type="text" placeholder="Buscar producto..." class="group-focus:outline group-focus:ring-orange-400 focus:outline-none text-gray-700"/>
+          <input name="product_find" id="product_find" type="text" placeholder="Buscar producto..."
+            class="group-focus:outline group-focus:ring-orange-400 focus:outline-none text-gray-700" />
         </span>
       </form>
-  
+
       <div class="flex items-center justify-center">
-        <div class="ml-0 md:ml-10 border-2  font-semibold text-white border-orange-400 py-1 px-3 rounded-l-lg bg-orange-300">Ordenar</div>
-        <ul class="flex border-t-2 border-b-2 border-r-2 rounded-r-lg  border-orange-400">
-          <li onclick="resetFilter()"class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">Por defecto</li>
-          <li onclick="sortProductsDesc()"class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">Max-Min</li>
-          <li onclick="sortProductsAsc()" class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-orange-400">Min-Max</li>
+        <div
+          class="ml-0 md:ml-10 border-2 font-semibold text-white border-orange-400 py-1 px-3 rounded-l-lg bg-orange-300">
+          Ordenar
+        </div>
+        <ul class="flex border-t-2 border-b-2 border-r-2 rounded-r-lg border-orange-400">
+          <li onclick="sortByDefault()"
+            class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">
+            Por defecto
+          </li>
+          <li onclick="sortProductsDesc()"
+            class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">
+            Max-Min
+          </li>
+          <li onclick="sortProductsAsc()" class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-orange-400">
+            Min-Max
+          </li>
         </ul>
       </div>
     </div>
-    
 
     <div class="md:container gap-8 flex h-full max-h-full w-11/12 mx-auto">
       <div class="md:w-2/12 px-4 py-2 md:block hidden h-min bg-gray-50 rounded-md border-2 border-gray-100">
         <h2 class="font-bold">Seleccione la categoría</h2>
-        <hr class="my-2">
-        <ul class="my-4" id="category-list">
-          
-        </ul>
-        <hr class="my-2">
-          <span onclick="resetFilter()" class="my-[3px] font-semibold cursor-pointer hover:text-orange-400">Listar todo</span> 
+        <hr class="my-2" />
+        <ul class="my-4" id="category-list"></ul>
+        <hr class="my-2" />
+        <span onclick="resetFilter()" class="my-[3px] font-semibold cursor-pointer hover:text-orange-400">Listar
+          todo</span>
       </div>
-      <div class=" w-full md:h-5/6 h-full ">
-       
+      <div class="w-full md:h-5/6 h-full">
         <div id="grid-products"
-          class="grid  mb-20  md:grid-cols-4 gap-10 text-center sm:grid-cols-2 grid-cols-1 auto-rows-auto">
+          class="grid mb-10 md:grid-cols-4 gap-10 text-center sm:grid-cols-2 grid-cols-1 auto-rows-auto"></div>
 
+        <div class="mb-10 flex w-full items-center justify-center md:justify-end">
+          <div id="pagination"></div>
         </div>
       </div>
     </div>
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js"
+    integrity="sha512-1zzZ0ynR2KXnFskJ1C2s+7TIEewmkB2y+5o/+ahF7mwNj9n3PnzARpqalvtjSbUETwx6yuxP5AJXZCpnjEJkQw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://kit.fontawesome.com/3c79500f80.js" crossorigin="anonymous"></script>
   <script src="index.js"></script>
 </body>
