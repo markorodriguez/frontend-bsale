@@ -4,6 +4,7 @@ const dropOptions = document.getElementById("dropdown-options");
 const gridProducts = document.getElementById("grid-products");
 const categoryList = document.getElementById("category-list");
 const productSearch = document.getElementById("product-search");
+const spinnerContainer = document.getElementById("spinner");
 
 const products = [];
 const categories = [];
@@ -14,6 +15,8 @@ window.addEventListener("resize", () => {
     dropdown.style.display = "none";
   }
 });
+
+
 
 burgerButton.addEventListener("click", () => {
   if (dropdown.style.display === "none") {
@@ -26,6 +29,14 @@ burgerButton.addEventListener("click", () => {
 const fetchData = async () => {
   const resProd = await fetch("http://localhost:5000/products");
   const dataProd = await resProd.json();
+
+  setTimeout( () =>{
+    spinnerContainer.classList.add("hidden-loading");
+  }, 1500) 
+  setTimeout( () =>{
+    spinnerContainer.classList.add("hidden");
+  }, 2500) 
+
   dataProd.map((product) => products.push(product));
 
   tmpArray = dataProd;

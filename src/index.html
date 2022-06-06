@@ -7,15 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="https://www.iconpacks.net/icons/2/free-store-icon-2017-thumb.png"
     type="image/x-icon" />
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="../dist/output.css" />
+
+  <link rel="stylesheet" href="output.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
     integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Desafío Bsale</title>
 </head>
 
-<body class="max-w-screen h-screen" onload="fetchData()">
+<body class="max-w-screen h-full" onload="fetchData()">
+
+  <div id="spinner" class="w-full h-full flex items-center justify-center fixed z-10 bg-orange-400">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+
   <!--Navbar -->
   <nav class="w-full fixed top-0">
     <div class="py-4 bg-orange-400 shadow-md">
