@@ -99,7 +99,7 @@ const resetFilter = () => {
 productSearch.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const foundProducts = await fetch("http://localhost:5000/find-product", {
+  const foundProducts = await fetch("https://bsale-markorodriguez.herokuapp.com/find-product", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
