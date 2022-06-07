@@ -71,40 +71,6 @@ const filterData = (params) => {
   insertPagination(tmpArray)
 };
 
-const renderProducts = (params) => {
-  const items = params.map(
-    (element) => `
-    <div class="bg-white overflow-hidden rounded-xl shadow-md border-2 h-auto flex flex-col">
-    <div class="h-full">
-        <img class="h-full bg-white w-full" src="${element.url_image == "" || element.url_image == null
-        ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDNXhjagJgGqhsSMn1cUPkiaMU5RXD_lg9oUkYwhE6Ko_snuPYOsD18DTF8A0hYDQUbN4&usqp=CAU"
-        : element.url_image
-      }" />
-    </div>
-    <div class="py-4">
-        <span class="font-semibold">${element.name.toUpperCase()}</span>
-        <div class="flex w-full mt-4 flex-row items-center justify-around">
-            <div class="flex flex-col">
-            ${element.discount == 0
-        ? `<span class="font-semibold">CLP ${element.price - element.discount
-        }</span>`
-        : `<span class="font-semibold line-through text-gray-500">CLP ${element.price
-        }</span>
-                <span class="font-semibold">CLP ${element.price - element.discount
-        }</span>`
-      }
-            </div>
-                <div>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Comprar</button>
-                </div>
-        </div>
-    </div>
-</div>
-    `
-  );
-
-  return items;
-};
 
 const renderSideBar = (params) => {
   const items = params.map(
@@ -146,12 +112,12 @@ productSearch.addEventListener("submit", async (e) => {
 });
 
 const sortProductsAsc = () => {
-  const sortedProducts = [...tmpArray].sort((a, b) => a.price - b.price);
+  const sortedProducts = [...tmpArray].sort((a, b) => (a.price - (a.price * a.discount/100)) -( b.price - (b.price * b.discount/100)));
   insertPagination(sortedProducts);
 };
 
 const sortProductsDesc = () => {
-  const sortedProducts = [...tmpArray].sort((a, b) => b.price - a.price);
+  const sortedProducts = [...tmpArray].sort((a, b) => ( b.price - (b.price * b.discount/100)) - (a.price - (a.price * a.discount/100)) );
   insertPagination(sortedProducts);
 };
 
@@ -182,12 +148,9 @@ const insertPagination = (params) => {
                     <div class="flex w-full mt-4 flex-row items-center justify-around">
                         <div class="flex flex-col">
                         ${item.discount == 0
-              ? `<span class="font-semibold">CLP ${item.price - item.discount
-              }</span>`
-              : `<span class="font-semibold line-through text-gray-500">CLP ${item.price
-              }</span>
-                            <span class="font-semibold">CLP ${item.price - item.discount
-              }</span>`
+              ? `<span class="font-semibold">CLP ${item.price}</span>`
+              : `<span class="font-semibold line-through text-gray-500">CLP ${item.price}</span>
+                            <span class="font-semibold">CLP ${item.price - (item.price * item.discount/100)}</span>`
             }
                         </div>
                             <div>
