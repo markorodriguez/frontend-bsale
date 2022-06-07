@@ -108,6 +108,7 @@ productSearch.addEventListener("submit", async (e) => {
   });
 
   const data = await foundProducts.json();
+  tmpArray = data
   insertPagination(data);
 });
 
