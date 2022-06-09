@@ -14,7 +14,7 @@ Las tecnologías empleadas para el desarrollo del ejercicio son Vanilla JavaScri
 Repositorio Frontend: https://github.com/markorodriguez/frontend-bsale  
 Repositorio Backend: https://github.com/markorodriguez/backend-bsale
 
-Despliegue Frontend: https://github.com/markorodriguez/backend-bsale
+Despliegue Frontend: https://github.com/markorodriguez/backend-bsale  
 Despliegue Backend: https://bsale-markorodriguez.herokuapp.com/
 
 ## Instalación
