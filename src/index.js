@@ -15,7 +15,7 @@ let tmpArray = [];
 
 //Función para ocultar el menú desplegable si el width de la pantalla es mayor a 768px
 window.addEventListener("resize", () => {
-  if (window.innerWidth >= 769) {
+  if (window.innerWidth > 768) {
     dropdown.style.display = "none";
   }
 });
@@ -77,6 +77,7 @@ const fetchData = async () => {
 const filterDataProducts = async (params) => {
   let isValid = false
   
+  //Validar si el parámetro pertenece a una categoría registrada
   categories.map((category) => {
     if (category.id == params) {
       isValid = true;
@@ -123,7 +124,7 @@ const renderDropdown = (params) => {
   return items;
 };
 
-//Emplea 
+//Emplea el arreglo generado al momento de cargar la página
 const resetFilter = () => {
   insertPagination(products);
 };
@@ -132,7 +133,7 @@ const resetFilter = () => {
 productSearch.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const foundProducts = await fetch("http://localhost:5000/find-product", {
+  const foundProducts = await fetch("https://bsale-markorodriguez.herokuapp.com/find-product", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
