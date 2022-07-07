@@ -14,6 +14,9 @@ Las tecnologías empleadas para el desarrollo del ejercicio son Vanilla JavaScri
 Repositorio Frontend: https://github.com/markorodriguez/frontend-bsale  
 Repositorio Backend: https://github.com/markorodriguez/backend-bsale
 
+Despliegue Frontend: https://gilded-sunflower-516a55.netlify.app/   
+Despliegue Backend: https://bsale-markorodriguez.herokuapp.com/
+
 ## Instalación
 
 El primer paso es clonar el repositorio y seguir las siguientes indicaciones:
