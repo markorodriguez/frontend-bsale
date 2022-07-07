@@ -85,7 +85,7 @@ const filterDataProducts = async (params) => {
   })
   
   if(isValid){
-    const filteredProducts = await fetch(`https://bsale-markorodriguez.herokuapp.com/filter-product`, {
+    const filteredProducts = await fetch(`https://bsale-markorodriguez.herokuapp.com/actions/filter-product`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -133,7 +133,7 @@ const resetFilter = () => {
 productSearch.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const foundProducts = await fetch("https://bsale-markorodriguez.herokuapp.com/find-product", {
+  const foundProducts = await fetch("https://bsale-markorodriguez.herokuapp.com/actions/find-product", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
