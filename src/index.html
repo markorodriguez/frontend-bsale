@@ -42,7 +42,7 @@
 
   <!--Body -->
   <div class="h-screen  w-full max-w-full">
-    <div class="flex md:flex-row flex-col justify-between container mx-auto gap-5 w-full pt-24 mb-10 ">
+    <div class="flex md:flex-row flex-col justify-center container mx-auto gap-5 w-full pt-24 mb-10 ">
       
       <form action="/#" id="product-search" method="post" class="text-center">
         <span class="border-2 py-1 px-4 rounded-lg">
@@ -51,25 +51,6 @@
             class="group-focus:outline group-focus:ring-orange-400 focus:outline-none text-gray-700" />
         </span>
       </form>
-      <div class="flex items-center justify-center">
-        <div
-          class="ml-0 md:ml-10 border-2 font-semibold text-white border-orange-400 py-1 px-3 rounded-l-lg bg-orange-300">
-          Ordenar
-        </div>
-        <ul class="flex border-t-2 border-b-2 border-r-2 rounded-r-lg border-orange-400">
-          <li onclick="sortByDefault()"
-            class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">
-            Por defecto
-          </li>
-          <li onclick="sortProductsDesc()"
-            class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-r-2 border-orange-400">
-            Max-Min
-          </li>
-          <li onclick="sortProductsAsc()" class="px-3 hover:bg-orange-50 hover:cursor-pointer py-1 border-orange-400">
-            Min-Max
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div class="md:container gap-8 flex h-auto w-11/12 mx-auto">
@@ -78,7 +59,7 @@
         <hr class="my-2" />
         <ul class="my-4" id="category-list"></ul>
         <hr class="my-2" />
-        <span onclick="resetFilter()" class="my-[3px] font-semibold cursor-pointer hover:text-orange-400">Listar
+        <span onclick="fetchProducts()" class="my-[3px] font-semibold cursor-pointer hover:text-orange-400">Listar
           todo</span>
       </div>
       <div class="w-full md:h-5/6 h-full">
