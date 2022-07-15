@@ -75,7 +75,6 @@ const fetchCategories = async () => {
   });
 
   const catData = await resCat.json();
-  categories.push(catData);
   //Insertar las categorías en el menú lateral
   const categoriesItems = renderSideBar(catData);
   categoryList.innerHTML = categoriesItems.join(" ");
