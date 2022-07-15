@@ -73,9 +73,8 @@ const fetchCategories = async () => {
       "Access-Control-Allow-Headers": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
     },
   });
-
-  const catData = await resCat.json();
   //Insertar las categorías en el menú lateral
+  const catData = await resCat.json();
   const categoriesItems = renderSideBar(catData);
   categoryList.innerHTML = categoriesItems.join(" ");
 
@@ -103,7 +102,7 @@ const renderDropdown = (params) => {
     (element) =>
       ` <div  onclick="filterDataProducts(${
         element.id
-      })" class="dropdown-element">${
+      },1)" class="dropdown-element">${
         element.name.charAt(0).toUpperCase() + "" + element.name.slice(1)
       }</div>`
   );
@@ -224,9 +223,9 @@ const filterDataProducts = async (params, page) => {
   );
 
   const data = await filteredProducts.json();
-  tmpArray = data;
 
   gridProducts.innerHTML = renderProductsGrid(data.results.results).join(" ");
+  console.log()
   paginationContainer.innerHTML = renderPaginationCategory(
     data.results.numberPages,
     data.results.results[0].category
