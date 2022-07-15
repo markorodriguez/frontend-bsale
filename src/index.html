@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css"
     integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Desafío Bsale</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Desafío Bsale</title>
 </head>
 
-<body class="max-w-screen h-full" onload="fetchData()">
+<body class="max-w-screen h-full" onload="firstLoad()">
 
   <div id="spinner" class="w-full h-full flex items-center justify-center fixed z-10 bg-orange-400">
     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
@@ -40,9 +41,9 @@
   </nav>
 
   <!--Body -->
-  <div class="h-screen pt-24 w-full max-w-full">
-    <div
-      class="flex flex-col gap-5 md:flex-row container w-full mx-auto items-center mb-8 justify-center md:justify-end">
+  <div class="h-screen  w-full max-w-full">
+    <div class="flex md:flex-row flex-col justify-between container mx-auto gap-5 w-full pt-24 mb-10 ">
+      
       <form action="/#" id="product-search" method="post" class="text-center">
         <span class="border-2 py-1 px-4 rounded-lg">
           <i class="fa-solid mr-4 fa-magnifying-glass"></i>
@@ -50,7 +51,6 @@
             class="group-focus:outline group-focus:ring-orange-400 focus:outline-none text-gray-700" />
         </span>
       </form>
-
       <div class="flex items-center justify-center">
         <div
           class="ml-0 md:ml-10 border-2 font-semibold text-white border-orange-400 py-1 px-3 rounded-l-lg bg-orange-300">
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <div class="md:container gap-8 flex h-full max-h-full w-11/12 mx-auto">
+    <div class="md:container gap-8 flex h-auto w-11/12 mx-auto">
       <div class="md:w-2/12 px-4 py-2 md:block hidden h-min bg-gray-50 rounded-md border-2 border-gray-100">
         <h2 class="font-bold">Seleccione la categoría</h2>
         <hr class="my-2" />
@@ -98,7 +98,8 @@
     integrity="sha512-1zzZ0ynR2KXnFskJ1C2s+7TIEewmkB2y+5o/+ahF7mwNj9n3PnzARpqalvtjSbUETwx6yuxP5AJXZCpnjEJkQw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://kit.fontawesome.com/3c79500f80.js" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
+  <script src="main.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 
 </html>

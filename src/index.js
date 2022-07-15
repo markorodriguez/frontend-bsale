@@ -181,7 +181,7 @@ const insertPagination = (params) => {
                 <div class="bg-white overflow-hidden rounded-xl shadow-md border-2 h-auto flex flex-col">
                 <div class="h-full">
                     <img class="h-full bg-white w-full" src="${item.url_image == "" || item.url_image == null
-              ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDNXhjagJgGqhsSMn1cUPkiaMU5RXD_lg9oUkYwhE6Ko_snuPYOsD18DTF8A0hYDQUbN4&usqp=CAU"
+              ? "https://www.medcons24.com/Content/Images/no-search-result.svg"
               : item.url_image
             }" />
                 </div>
